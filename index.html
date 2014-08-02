@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="picker.css">
     </head>
     <body>
-        <h1>Please choose month range:</h1>
+        <h1>dateRangePicker examples with different settings:</h1>
         <div class='selectMonths'>
 			<input type='text' placeholder='Date of inquery' value='' readonly />
             <i>&#128197;</i>
@@ -48,7 +48,7 @@
                 });
 
             // update settings
-			$('.selectMonths:last input').rangePicker({ setDate:[[2,2009],[3,2009]] });
+			$('.selectMonths:last input').rangePicker({ setDate:[[2,2009],[3,2009]], closeOnSelect:false });
 
 		</script>
     </body>

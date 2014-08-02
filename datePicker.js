@@ -476,7 +476,7 @@
 
 	$.fn.rangePicker.defaults = {
 		RTL : false,
-		closeOnSelect : false,
+		closeOnSelect : true,
 		presets : [{
 				buttonText  : '1 month',
 				displayText : 'one month',
