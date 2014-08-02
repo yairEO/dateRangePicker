@@ -7,10 +7,21 @@
         <meta name="description" content="">
 
         <link rel="stylesheet" href="http://www.bootstrapcdn.com//twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+        <style type="text/css">
+            body{ padding:10px; font-size:12px; background:#F1F1F1; }
+            h1{ font-size:2em; text-align:center; border-bottom:1px solid #CCC; margin-bottom:1em; }
+
+            .selectMonths{ float:right; position:relative; display:inline-block; }
+            .selectMonthsselect {height: 30px; }
+            .selectMonths > i{ position:absolute; right:5px; top:5px; opacity:0.35; font-style:normal; font-size:18px; transition:0.2s; pointer-events:none; }
+            .selectMonths > input{ text-transform:capitalize; padding-left:10px; cursor:default; cursor:pointer; }
+            .selectMonths:hover > i{ opacity:.7; }
+            .selectMonths + .selectMonths{ float:none; }
+        </style>
         <link rel="stylesheet" href="picker.css">
     </head>
     <body>
-        <h3>Please choose month range:</h3>
+        <h1>Please choose month range:</h1>
         <div class='selectMonths'>
 			<input type='text' placeholder='Date of inquery' value='' readonly />
             <i>&#128197;</i>

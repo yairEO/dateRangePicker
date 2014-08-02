@@ -13,14 +13,16 @@
 		lastValue,
 		// DOM structure
         Template = $('<div class="rangePicker"> \
-						<div class="preset"></div> \
-						<div class="custom"> \
-							<div class="calendar from"><strong></strong></div> \
-							<div class="calendar to"><strong></strong></div> \
-							<footer> \
-								<button type="button" class="confirm btn btn-primary">Apply</button> \
-								<button type="button" class="cancel btn">Cancel</button> \
-							</footer> \
+        				<div class="wrap"> \
+							<div class="preset"></div> \
+							<div class="custom"> \
+								<div class="calendar from"><strong></strong></div> \
+								<div class="calendar to"><strong></strong></div> \
+								<footer> \
+									<button type="button" class="confirm btn btn-primary">Apply</button> \
+									<button type="button" class="cancel btn">Cancel</button> \
+								</footer> \
+							</div> \
 						</div> \
 					</div>');
 
@@ -41,7 +43,7 @@
 			this.tether = new Tether({
 				element         : this.picker,
 				target          : this.obj,
-				attachment      : this.settings.RTL ? 'bottom right' : 'bottom left',
+				attachment      : this.settings.RTL ? 'top right' : 'top left',
 				targetAttachment: this.settings.RTL ? 'bottom right' : 'bottom left',
 				constraints: [{
 			     	to: 'window',
@@ -124,7 +126,7 @@
 					.on('click.dp', '.months > button', that.monthClick.bind(that))
 					.on('change', 'select', 			that.changeYear.bind(that))
 					.on('click', '.confirm',  			that.applyDate.bind(that))
-					.on('click', '.cancel', 			that.cancel)
+					.on('click', '.cancel', 			that.cancel.bind(that))
 			},
 
 			destroy : function(){

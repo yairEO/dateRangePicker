@@ -6,6 +6,8 @@ Highly configurable. This plugin currently uses Tether for positioning the picke
 to position the picker on screen this way, inseatd of absolutely positioning it inside some element, due to overflow clipping
 that might occur.
 
+Tested on IE9+ and obviously works on normal browsers.
+
 ## How to use:
     $('input').rangePicker({ minDate:[2,2009], maxDate:[10,2013] })
         // subscribe to the "done" event after user had selected a date
