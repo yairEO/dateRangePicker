@@ -25,7 +25,10 @@
                 .rangePicker({ minDate:[2,2009], maxDate:[10,2013] })
                 // subscribe to the "done" event after user had selected a date
                 .on('datePicker.done', function(e, result){
-                    console.log(result);
+                    if( result instanceof Array )
+                        console.log(new Date(result[0][1], result[0][0] - 1), new Date(result[1][1], result[1][0] - 1));
+                    else
+                        console.log(result);
                 });
 
             // update settings

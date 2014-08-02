@@ -400,7 +400,6 @@
 					for( var i = this.settings.presets.length; i--; ){
 						if( this.settings.presets[i].value == result ){
 							displayValue = this.settings.presets[i].displayText;
-							console.log(displayValue);
 							break;
 						}
 					}
@@ -408,7 +407,7 @@
 				else{ // parse it
 					displayValue =  this.displayValue();
 
-					// normalize result to type Number
+					// normalize result type to "Number"
 					result[0][1] = +result[0][1];
 					result[1][1] = +result[1][1];
 				}
