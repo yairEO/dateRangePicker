@@ -4,9 +4,8 @@
 	$preset-width : 200px;
 
  	opacity:0;
- 	max-height:0;
 	transition:0.12s ease-out;
-	transition-property:margin, max-height, padding, opacity;
+	transition-property:margin, padding, opacity;
 
 	> .wrap{
 		position: relative;
@@ -16,15 +15,18 @@
 	 	border:1px solid rgba(0,0,0,0.2);
 	 	box-shadow:0 2px 4px rgba(0,0,0,0.2);
 	 	overflow:hidden;
+	 	max-height:0;
 
 	 	transition:0.12s ease-out;
-		transition-property:margin, max-height, padding, opacity;
+		transition-property:margin, padding, max-height;
  	}
 
 	// arrow triangle
 	&::before{ content:'\25B2'; position:absolute; z-index:1; top:-15px; left:10px; font-size:20px; text-shadow: 0 -2px 1px rgba(0,0,0,0.2); color:#FFF; transform:scaleX(1.5); }
 
-	&.show{ z-index:999; bottom:auto; margin-top:10px; max-height:180px; opacity:1; }
+	&.show{ z-index:999; bottom:auto; margin-top:10px; opacity:1;
+		> .wrap{ max-height:180px; }
+	}
 	&.show.custom > .wrap{ padding:0 430px 98px 0; }
 
 	&.RTL{
