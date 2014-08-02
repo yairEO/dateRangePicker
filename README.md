@@ -7,11 +7,11 @@ to position the picker on screen this way, inseatd of absolutely positioning it 
 that might occur.
 
 ## How to use:
-    .rangePicker({ minDate:[2,2009], maxDate:[10,2013] })
-    // subscribe to the "done" event after user had selected a date
-    .on('datePicker.done', function(e, result){
-        console.log(result);
-    });
+    $('input').rangePicker({ minDate:[2,2009], maxDate:[10,2013] })
+        // subscribe to the "done" event after user had selected a date
+        .on('datePicker.done', function(e, result){
+            console.log(result);
+        });
 
 
 ## Settings
