@@ -21,6 +21,7 @@ Tested on IE9+ and obviously works on normal browsers.
 The main settings object is `$.fn.rangePicker.defaults` and these are the default settings, which can be set per-intance:
 
     {
+        RTL : false,
         closeOnSelect : true,
         presets : [{
                 buttonText  : '1 month',
