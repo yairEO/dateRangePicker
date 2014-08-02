@@ -1,0 +1,75 @@
+body{ padding:10px; font-size:12px; background:#F1F1F1; }
+
+.selectMonths{ position:relative; display:inline-block;
+    select {height: 30px; }
+    > i{ position:absolute; right:5px; top:5px; opacity:0.35; font-style:normal; font-size:18px; transition:0.2s; pointer-events:none; }
+	> input{ text-transform:capitalize; padding-left:10px; cursor:default; cursor:pointer; }
+
+	&:hover{
+		> i{ opacity:.7; }
+	}
+}
+
+
+ .rangePicker{
+ 	$color-bg     : rgba(59,122,181,0.1);
+	$color-hover  : rgba(59,122,181,0.1);
+	$preset-width : 200px;
+
+ 	position:absolute;
+ 	z-index:-1;
+ 	left:0; bottom:200%;
+ 	//margin-top:-25px;
+	min-width:$preset-width;
+ 	max-height:0;
+ 	white-space:nowrap;
+ 	background:#FFF;
+ 	border:1px solid rgba(0,0,0,0.2);
+ 	box-shadow:0 2px 4px rgba(0,0,0,0.2);
+ 	overflow:hidden;
+ 	opacity:0;
+	transition:0.12s ease-out;
+	transition-property:margin, max-height, padding, opacity;
+
+	&.show{ z-index:999; bottom:auto; margin-top:10px; max-height:180px; opacity:1; }
+	&.show.custom{ padding:0 430px 98px 0; }
+
+	.custom > div, .preset{
+		button{ border:1px solid transparent; border-radius:3px;
+			&:hover{ background:$color-hover; }
+			&.selected{ background:#5985DE; color:#FFF; }
+			&[disabled]{ border-color:transparent; background:none; box-shadow:none; opacity:.4; cursor:default; color:inherit; }
+		}
+	}
+
+	footer{ display:block; max-height:40px; padding:5px; overflow:hidden; transition:0.2s ease-out;
+		button{ margin-left:20px; float:right; }
+	}
+
+	.set ~ footer{ max-height:0; padding:0 5px;  border-color:transparent; }
+
+	//> *{ display:inline-block; vertical-align:top; }
+	> .preset{ display:block; text-transform:capitalize; min-width:110px; padding:3px; width:$preset-width; box-shadow: 0 100px #FFF; position:relative; z-index:1; background:#FFF; box-sizing:border-box;
+		button{ display:block; width:100%; margin:0; background:none; padding:4px 8px; text-align:left; position:relative;
+			&:last-child::after{ content:'\25B8'; position:absolute; right:5px; font-size:21px; opacity:0.7; }
+		}
+	}
+	> .custom{ position:absolute; top:0; right:0; padding:6px; transition:0.4s cubic-bezier(.77,.11,.22,1);
+		> div{ display:inline-block; margin:25px 3px 0; width:190px; background:$color-bg; padding:7px; }
+		strong{ display:block; margin:-30px 0 10px;
+			span{ text-transform:capitalize; opacity:0.9; font-weight:normal; display:inline-block; margin-left:6px;
+				&:before{ content:'–'; margin-right:6px; }
+			}
+		}
+		.from strong:before{ content:'From'; }
+		.to strong:before{ content:'To'; }
+	}
+
+	select{ margin-bottom:7px; width:100%; }
+	.calendar.from > select::after{ content:'From - '; }
+	.calendar.to > select::after{ content:'To - '; }
+	.wrap{ display:inline-block; }
+	.months{
+		button{ background:none; float:left; width:33%; margin:0 0.15%; padding:5px; text-transform:capitalize; }
+	}
+}

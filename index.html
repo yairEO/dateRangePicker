@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>RangePicker</title>
+        <meta name="description" content="">
+
+        <link rel="stylesheet" href="http://www.bootstrapcdn.com//twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+        <link rel="stylesheet" href="picker.css">
+    </head>
+    <body>
+        <h3>Please choose month range:</h3>
+        <div class='selectMonths'>
+			<input type='text' placeholder='Date of inquery' value='' readonly />
+            <i>&#128197;</i>
+		</div>
+
+        <!-- scripts -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="tether.min.js"></script>
+        <script src="datePicker.js"></script>
+		<script>
+			$('.selectMonths input')
+                .rangePicker({ minDate:[2,2009], maxDate:[10,2013] })
+                // subscribe to the "done" event after user had selected a date
+                .on('datePicker.done', function(e, result){
+                    console.log(result);
+                });
+
+            // update settings
+			$('.selectMonths input').rangePicker({ setDate:[[2,2009],[3,2009]] });
+		</script>
+    </body>
+</html>
