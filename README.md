@@ -8,6 +8,9 @@ that might occur.
 
 Tested on IE9+ and obviously works on normal browsers.
 
+## Demo page
+http://yaireo.github.io/dateRangePicker/
+
 ## How to use:
     $('input').rangePicker({ minDate:[2,2009], maxDate:[10,2013] })
         // subscribe to the "done" event after user had selected a date
