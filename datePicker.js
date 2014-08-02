@@ -31,6 +31,9 @@
 			this.callback = typeof callback == 'function' ? callback : null;
 			this.result; // the chosen date
 
+			// set direction mode
+			if( this.settings.RTL )
+				this.picker.addClass('RTL');
 			// inject picker
 			this.picker.insertAfter(this.obj);
 
@@ -38,8 +41,12 @@
 			this.tether = new Tether({
 				element         : this.picker,
 				target          : this.obj,
-				attachment      : 'bottom left',
-				targetAttachment: 'bottom left'
+				attachment      : this.settings.RTL ? 'bottom right' : 'bottom left',
+				targetAttachment: this.settings.RTL ? 'bottom right' : 'bottom left',
+				constraints: [{
+			     	to: 'window',
+			     	attachment: 'together'
+			    }]
 			})
 		};
 
@@ -62,7 +69,7 @@
 					month, button, i;
 
 				// add the "custom" preset to the array of presets
-				this.settings.presets.push({ buttonText: 'custom', value: 'custom' });
+			//	this.settings.presets.push({ buttonText:'custom', value:'custom' });
 
 				// presets
 				for( i = this.settings.presets.length; i--; ){
@@ -127,6 +134,9 @@
 
 			show : function(){
 				var that = this;
+
+				// hide all other pickers, if present on the page
+				$('.rangePicker.show').removeClass('show');
 
 				if( this.picker.hasClass('show') ){
 					this.hide();
@@ -461,7 +471,8 @@
 	// Defaults
 
 	$.fn.rangePicker.defaults = {
-		closeOnSelect : true,
+		RTL : false,
+		closeOnSelect : false,
 		presets : [{
 				buttonText  : '1 month',
 				displayText : 'one month',
@@ -477,7 +488,11 @@
 			},{
 				buttonText  : '12 months',
 				displayText : 'twelve months',
-				value       : '12m'
+				value       : '12m',
+			},{
+				buttonText  : 'Custom',
+				displayText : 'twelve months',
+				value       : 'custom'
 		}],
 		months 	: ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'],
 		minDate : [5,2006],

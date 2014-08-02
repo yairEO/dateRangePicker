@@ -1,6 +1,6 @@
 body{ padding:10px; font-size:12px; background:#F1F1F1; }
 
-.selectMonths{ position:relative; display:inline-block;
+.selectMonths{ float:right; position:relative; display:inline-block;
     select {height: 30px; }
     > i{ position:absolute; right:5px; top:5px; opacity:0.35; font-style:normal; font-size:18px; transition:0.2s; pointer-events:none; }
 	> input{ text-transform:capitalize; padding-left:10px; cursor:default; cursor:pointer; }
@@ -8,6 +8,8 @@ body{ padding:10px; font-size:12px; background:#F1F1F1; }
 	&:hover{
 		> i{ opacity:.7; }
 	}
+
+	+ .selectMonths{ float:none; }
 }
 
 
@@ -16,9 +18,9 @@ body{ padding:10px; font-size:12px; background:#F1F1F1; }
 	$color-hover  : rgba(59,122,181,0.1);
 	$preset-width : 200px;
 
- 	position:absolute;
+ 	//position:absolute;
  	z-index:-1;
- 	left:0; bottom:200%;
+ 	//left:0; bottom:200%;
  	//margin-top:-25px;
 	min-width:$preset-width;
  	max-height:0;
@@ -33,6 +35,16 @@ body{ padding:10px; font-size:12px; background:#F1F1F1; }
 
 	&.show{ z-index:999; bottom:auto; margin-top:10px; max-height:180px; opacity:1; }
 	&.show.custom{ padding:0 430px 98px 0; }
+
+	&.RTL{
+		&.show.custom{ padding:0 0 98px 430px; margin-left:-430px; }
+		> .preset{
+			> button{ text-align:right;
+				&[value="custom"]::after{ content:'\25C2'; right:auto; left:5px; }
+			}
+		}
+		> .custom{ left:0; right:auto; }
+	}
 
 	.custom > div, .preset{
 		button{ border:1px solid transparent; border-radius:3px;
@@ -51,7 +63,7 @@ body{ padding:10px; font-size:12px; background:#F1F1F1; }
 	//> *{ display:inline-block; vertical-align:top; }
 	> .preset{ display:block; text-transform:capitalize; min-width:110px; padding:3px; width:$preset-width; box-shadow: 0 100px #FFF; position:relative; z-index:1; background:#FFF; box-sizing:border-box;
 		button{ display:block; width:100%; margin:0; background:none; padding:4px 8px; text-align:left; position:relative;
-			&:last-child::after{ content:'\25B8'; position:absolute; right:5px; font-size:21px; opacity:0.7; }
+			&[value="custom"]::after{ content:'\25B8'; position:absolute; right:5px; font-size:21px; opacity:0.7; }
 		}
 	}
 	> .custom{ position:absolute; top:0; right:0; padding:6px; transition:0.4s cubic-bezier(.77,.11,.22,1);
