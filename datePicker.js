@@ -17,7 +17,7 @@
 							<div class="preset"></div> \
 							<div class="custom"> \
 								<div class="calendar from"><strong></strong></div> \
-								<div class="calendar to"><strong></strong></div> \
+								<div class="calendar to"></div> \
 								<footer> \
 									<button type="button" class="confirm btn btn-primary">Apply</button> \
 									<button type="button" class="cancel btn">Cancel</button> \
@@ -80,8 +80,10 @@
 				this.presets = presetWrap.find('button');
 
 				// add indexes to match them for the right place in the this.result array
-				this.dateStartWrap = this.picker.find('.calendar.from');
-				this.dateEndWrap   = this.picker.find('.calendar.to');
+				this.calendar = {
+					from : this.picker.find('.calendar.from'),
+					to   : this.picker.find('.calendar.to')
+				}
 
 				// years
 				for( i = totalYears + 1; i--; ){
@@ -95,12 +97,12 @@
 				}
 
 				// generate "custom" markup for years and months
-				this.dateStartWrap.append(
+				this.calendar.from.append(
 					$('<select>').html(years),  // years.replace(/%%/g,'From - ')
 					$('<div>').addClass('months').html(months)
 				);
 
-				this.dateEndWrap.append( this.dateStartWrap.html() );
+				this.calendar.to.append( this.calendar.from.html() );
 
 
 				this.yearSelectors = this.picker.find('select');
@@ -374,8 +376,8 @@
 						to = '<span>'+ this.displayValue('%E') +'</span>';
 				}
 
-				this.picker.find('.calendar').eq(0).find('strong').html(from);
-				this.picker.find('.calendar').eq(1).find('strong').html(to);
+				this.calendar.from.find('strong').html(from);
+				this.calendar.to.find('strong').html(to);
 			},
 
 			// human-readable format for custom date

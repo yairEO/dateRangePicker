@@ -36,12 +36,17 @@
 					&[value="custom"]::after{ content:'\25C2'; right:auto; left:5px; }
 				}
 			}
-			> .custom{ left:0; right:auto; }
+			> .custom{ left:0; right:auto; direction:rtl;
+				> .calendar{
+					> strong{ text-align:right; }
+					&.from{ float:right; }
+				}
+			}
 		}
 	}
 
 	> .wrap{
-		> .custom > div,
+		> .custom > .calendar,
 		> .preset{
 			button{ border:1px solid transparent; border-radius:3px;
 				&:hover{ background:$color-hover; }
@@ -57,7 +62,7 @@
 			}
 		}
 		.custom{ position:absolute; top:0; right:0; padding:6px; transition:0.4s cubic-bezier(.77,.11,.22,1);
-			> div{ display:inline-block; margin:25px 3px 0; width:190px; background:$color-bg; padding:7px; }
+			> .calendar{ display:inline-block; margin:25px 3px 0; width:190px; background:$color-bg; padding:7px; }
 			strong{ display:block; margin:-30px 0 10px;
 				span{ text-transform:capitalize; opacity:0.9; font-weight:normal; display:inline-block; margin-left:6px;
 					&:before{ content:'-'; margin-right:6px; }
@@ -78,8 +83,12 @@
 
 
 	select{ margin-bottom:7px; width:100%; }
-	.calendar.from > select::after{ content:'From - '; }
-	.calendar.to > select::after{ content:'To - '; }
+
+	.calendar{
+		&.from > select::after{ content:'From - '; }
+		&.to > select::after{ content:'To - '; }
+	}
+
 	.wrap{ display:inline-block; }
 	.months{
 		button{ background:none; float:left; width:33%; margin:0 0.15%; padding:5px; text-transform:capitalize; }
